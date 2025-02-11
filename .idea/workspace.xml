@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ef6c70f-c062-4f2e-8946-62d5c829f38f" name="Changes" comment="add to repo">
+    <list default="true" id="3ef6c70f-c062-4f2e-8946-62d5c829f38f" name="Changes" comment="made functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MAD2502_P01_Sp25.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/MAD2502_P01_Sp25.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/riemann.py" beforeDir="false" afterPath="$PROJECT_DIR$/riemann.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +22,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "milesbryan-prog"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/milesbryan-prog/animated-octo-computing-machine.git",
+    "accountId": "dc26730b-e813-4d32-99b9-6cef9c309681"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -35,7 +54,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Computer__Project__1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -62,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1739294249758</updated>
       <workItem from="1739294250928" duration="902000" />
-      <workItem from="1739295171871" duration="376000" />
+      <workItem from="1739295171871" duration="1361000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -80,7 +99,31 @@
       <option name="project" value="LOCAL" />
       <updated>1739294983093</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add name">
+      <option name="closed" value="true" />
+      <created>1739295698577</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739295698577</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add names">
+      <option name="closed" value="true" />
+      <created>1739295758052</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739295758052</updated>
+    </task>
+    <task id="LOCAL-00005" summary="made functions">
+      <option name="closed" value="true" />
+      <created>1739296064401</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739296064401</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +153,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="add to repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="add to repo" />
+    <MESSAGE value="add name" />
+    <MESSAGE value="add names" />
+    <MESSAGE value="made functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="made functions" />
   </component>
 </project>
