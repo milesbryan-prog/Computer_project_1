@@ -11,8 +11,6 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     x_values_shifted.reshape(1,size)
 
     multiply_by = np.subtract(x_vals, x_values_shifted)
-    print(multiply_by)
-    print(x_vals_function)
     size_final = len(multiply_by)
     multiply_by =  multiply_by[:size_final - 1]
     final = multiply_by * x_vals_function
