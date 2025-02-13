@@ -28,3 +28,24 @@ def get_cartesian_coordinates(triangle_coordinates, barycentric_coordinates):
     py = lambda1 * y1 + lambda2 * y2 + lambda3 * y3
 
     return np.array([px, py])
+
+def is_inside_triangle(triangle_coordinates, point_coordinates):
+    """ Argument 1: 2-by-3 array of triangle coordinates
+    Argument 2: 1d array of point coordinates
+    Returns: 1d array of boolean indicating if point is inside triangle"""
+    barycentric_coordinates = get_barycentric_coordinates(triangle_coordinates, point_coordinates)
+    return np.all(barycentric_coordinates >= 0)
+
+triangle = np.array([[0, 5, 0],
+                     [0, 0, 5],])
+
+point = np.array([2,2])
+
+barycentric_coordinates = get_barycentric_coordinates(triangle, point)
+print(f'Barycentric coordinates: {barycentric_coordinates}')
+
+cartesian_coordinates = get_cartesian_coordinates(triangle, barycentric_coordinates)
+print(f'Cartesian coordinates: {cartesian_coordinates}')
+
+inside_triangle = is_inside_triangle(triangle, point)
+print(f'Inside triangle: {inside_triangle}')
