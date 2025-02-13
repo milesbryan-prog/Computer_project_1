@@ -1,3 +1,4 @@
+
 import numpy as np
 
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
@@ -30,6 +31,6 @@ def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
     size = len(x_vals)
     range = (x_vals[size - 1] - x_vals[0])
     mid_point = ((x_vals[0] + x_vals[size-1])/2)
-    final_simp = (1/6) * (func(x_vals[0]) + 4*func(mid_point) + func(x_vals[size-1]))
+    final_simp = (range/6) * (func(x_vals[0]) + 4*func(mid_point) + func(x_vals[size-1]))
     float(final_simp)
     return final_simp
