@@ -8,11 +8,15 @@ def get_barycentric_coordinates(triangle_coordinates, point_coordinates):
 
     px, py= point_coordinates
 
+    #Creating matrix based on triangle vertices
     matrix = np.array([[x1, x2, x3],
                       [y1, y2, y3],
                       [1, 1, 1]])
     b = np.array([px, py, 1])
+
+    #Solving the system of equations to get barycentric coordinates
     barycentric_coordinates = np.linalg.solve(matrix, b)
+    
     return barycentric_coordinates
   
 def get_cartesian_coordinates(triangle_coordinates, barycentric_coordinates):
@@ -24,7 +28,8 @@ def get_cartesian_coordinates(triangle_coordinates, barycentric_coordinates):
 
     lambda1, lambda2, lambda3 = barycentric_coordinates
 
-    px = lambda1 * x1 + lambda2 * x2 + lambda3 * x2
+    #Convert barycentric to Cartesian coordinates
+    px = lambda1 * x1 + lambda2 * x2 + lambda3 * x3
     py = lambda1 * y1 + lambda2 * y2 + lambda3 * y3
 
     return np.array([px, py])
@@ -41,11 +46,14 @@ triangle = np.array([[0, 5, 0],
 
 point = np.array([2,2])
 
+#Getting barycentric coordinates
 barycentric_coordinates = get_barycentric_coordinates(triangle, point)
 print(f'Barycentric coordinates: {barycentric_coordinates}')
 
+#Converting barycentric to Cartesian coordinates
 cartesian_coordinates = get_cartesian_coordinates(triangle, barycentric_coordinates)
 print(f'Cartesian coordinates: {cartesian_coordinates}')
 
+#Checking if coordinate point is inside the triangle
 inside_triangle = is_inside_triangle(triangle, point)
 print(f'Inside triangle: {inside_triangle}')
