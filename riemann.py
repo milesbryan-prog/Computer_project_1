@@ -21,9 +21,17 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
     size = len(x_vals)
-    x_vals_function = func(x_vals[:size - 1])
-    n = (x_vals[size-1] - x_vals[0]) / size
-    final_trap = n * sum(x_vals_function)
+    height = np.array([0])
+    size = len(x_vals)
+    # np.append(x_vals, 6)
+    height = np.concatenate((height, x_vals))
+    height = x_vals - height[:size]
+    left_base = func([x_vals[0::2]])
+    right_base = func([x_vals[1::2]])
+    top_of_fraction = np.add(left_base, right_base)
+    height = height[0::2] + height[1::2]
+    final_trap = ((top_of_fraction)/2) * height
+    final_trap = np.sum(final_trap)
     return final_trap
 
 
