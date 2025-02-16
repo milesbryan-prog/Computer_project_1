@@ -1,4 +1,3 @@
-
 import numpy as np
 
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
@@ -37,8 +36,12 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
 
 def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
     size = len(x_vals)
-    range = (x_vals[size - 1] - x_vals[0])
-    mid_point = ((x_vals[0] + x_vals[size-1])/2)
-    final_simp = (range/6) * (func(x_vals[0]) + 4*func(mid_point) + func(x_vals[size-1]))
-    float(final_simp)
-    return final_simp
+    midpoint = (x_vals[0::2] + x_vals[1::2])
+    midpoint = midpoint / 2
+    midpoint = func(midpoint)
+    width = (x_vals[1::2] - x_vals[0::2])
+    left_height = func(x_vals[0::2])
+    right_height = func(x_vals[1::2])
+    simpson_sum = (width/6) * (left_height + (4 * (midpoint)) + right_height)
+    simpson_sum = sum(simpson_sum)
+    return simpson_sum
