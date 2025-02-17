@@ -1,5 +1,6 @@
 import numpy as np
 
+#Riemann sums are a mathematical method of estimating the area under a curve by taking small, retangular or trapezoidal slices with the width defined by the differential
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     width_of_rectangle_in_sum = np.array([0])
     size = len(x_vals)
