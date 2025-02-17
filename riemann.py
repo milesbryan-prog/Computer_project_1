@@ -1,6 +1,7 @@
 import numpy as np
 
-#Riemann sums are a mathematical method of estimating the area under a curve by taking small, retangular or trapezoidal slices with the width defined by the differential
+#Using Riemann sums to estimate the area under a curve by taking small, retangular or trapezoidal slices with the width defined by the differential
+#left_endpoint() uses the leftmost y value within the length of each slice
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     width_of_rectangle_in_sum = np.array([0])
     size = len(x_vals)
@@ -14,7 +15,7 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     final = sum(final)
     return final
 
-
+#trapezoid() uses both the leftmost and rightmost y values to create trapezoidal slices
 def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
     height_of_interval = np.array([0])
     size_of_array = len(x_vals)
@@ -28,7 +29,7 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
     final_trapizoid_summed_up = np.sum(final_trapizoid)
     return final_trapizoid_summed_up
 
-
+#simpson uses the midpoint of each slice for the height
 def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
     midpoint = np.add(x_vals[0::2], x_vals[1::2]) / 2
     midpoint = func(midpoint)
