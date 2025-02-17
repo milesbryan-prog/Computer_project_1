@@ -1,5 +1,6 @@
 import numpy as np
 
+#riemann sums are a mathematical method using integrals to approximate the area under a curve, using small, uniform rectangles or trapezoids of length dx or dy. The left endpoint riemann sum uses the leftmost y value within each slice. The trapezopid however, creates trapezoidal slicesa using both endpoints of the slice. The simpson riemann sum uses the midpoint of y values in the range.  
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     width_of_rectangle_in_sum = np.array([0])
     size = len(x_vals)
