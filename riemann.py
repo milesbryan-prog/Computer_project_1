@@ -1,32 +1,31 @@
 import numpy as np
 
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
-    x_values_shifted = np.array([0])
+    width_of_rectangle_in_sum = np.array([0])
     size = len(x_vals)
-    #np.append(x_vals, 6)
-    x_values_shifted = np.concatenate((x_values_shifted, x_vals))
-    x_vals_function = func(x_vals[:size - 1])
-    x_values_shifted = x_values_shifted[0: size]
-    multiply_by = np.subtract(x_vals, x_values_shifted)
+    width_of_rectangle_in_sum = np.concatenate((width_of_rectangle_in_sum, x_vals))
+    values_on_the_curve = func(x_vals[:size - 1])
+    width_of_rectangle_in_sum = width_of_rectangle_in_sum[0: size]
+    multiply_by = x_vals - width_of_rectangle_in_sum
     size_final = len(multiply_by)
     multiply_by =  multiply_by[:size_final - 1]
-    final = multiply_by * x_vals_function
+    final = multiply_by * values_on_the_curve
     final = sum(final)
     return final
 
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
-    height = np.array([0])
-    size = len(x_vals)
-    height = np.concatenate((height, x_vals))
-    height = x_vals - height[:size]
-    left_base = func([x_vals[0::2]])
-    right_base = func([x_vals[1::2]])
-    top_of_fraction = np.add(left_base, right_base)
-    height = height[0::2] + height[1::2]
-    final_trap = ((top_of_fraction)/2) * height
-    final_trap = np.sum(final_trap)
-    return final_trap
+    height_of_interval = np.array([0])
+    size_of_array = len(x_vals)
+    height_of_interval = np.concatenate((height_of_interval, x_vals))
+    height_of_interval = x_vals - height_of_interval[:size_of_array]
+    left_base_of_trapezoid = func([x_vals[0::2]])
+    right_base_of_trapezoid = func([x_vals[1::2]])
+    top_of_fraction = left_base_of_trapezoid + right_base_of_trapezoid
+    final_height_of_intervals = height_of_interval[0::2] + height_of_interval[1::2]
+    final_trapizoid = ((top_of_fraction)/2) * final_height_of_intervals
+    final_trapizoid_summed_up = np.sum(final_trapizoid)
+    return final_trapizoid_summed_up
 
 
 def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
@@ -36,5 +35,5 @@ def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
     left_height = func(x_vals[0::2])
     right_height = func(x_vals[1::2])
     simpson_sum = (width/6) * (left_height + (4 * (midpoint)) + right_height)
-    simpson_sum = np.sum(simpson_sum)
+    simpson_sum = np.sum(simpson_sum) * 2
     return simpson_sum
