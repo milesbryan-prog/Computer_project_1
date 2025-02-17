@@ -15,11 +15,14 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
 
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
-    height_of_interval = x_vals
+    height_of_interval = np.array([0])
+    size_of_array = len(x_vals)
+    height_of_interval = np.concatenate((height_of_interval, x_vals))
+    height_of_interval = x_vals - height_of_interval[:size_of_array]
     left_base_of_trapezoid = func([x_vals[0::2]])
     right_base_of_trapezoid = func([x_vals[1::2]])
     top_of_fraction = left_base_of_trapezoid + right_base_of_trapezoid
-    final_height_of_intervals = height_of_interval[1::2] - height_of_interval[0::2]
+    final_height_of_intervals = height_of_interval[0::2] + height_of_interval[1::2]
     final_trapizoid = ((top_of_fraction)/2) * final_height_of_intervals
     final_trapizoid_summed_up = np.sum(final_trapizoid)
     return final_trapizoid_summed_up
@@ -28,7 +31,7 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
 def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
     midpoint = np.add(x_vals[0::2], x_vals[1::2]) / 2
     midpoint = func(midpoint)
-    width = np.subtract(x_vals[1::2], x_vals[0::2])
+    width  = x_vals[1::2] - x_vals[0::2]
     left_height = func(x_vals[0::2])
     right_height = func(x_vals[1::2])
     simpson_sum = (width/6) * (left_height + (4 * (midpoint)) + right_height)
