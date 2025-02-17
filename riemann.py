@@ -1,6 +1,5 @@
 import numpy as np
 
-#riemann sums are a mathematical method using integrals to approximate the area under a curve, using small, uniform rectangles or trapezoids of length dx or dy. The left endpoint riemann sum uses the leftmost y value within each slice. The trapezopid however, creates trapezoidal slicesa using both endpoints of the slice. The simpson riemann sum uses the midpoint of y values in the range.  
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     width_of_rectangle_in_sum = np.array([0])
     size = len(x_vals)
@@ -16,14 +15,11 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
 
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
-    height_of_interval = np.array([0])
-    size_of_array = len(x_vals)
-    height_of_interval = np.concatenate((height_of_interval, x_vals))
-    height_of_interval = x_vals - height_of_interval[:size_of_array]
+    height_of_interval = x_vals
     left_base_of_trapezoid = func([x_vals[0::2]])
     right_base_of_trapezoid = func([x_vals[1::2]])
     top_of_fraction = left_base_of_trapezoid + right_base_of_trapezoid
-    final_height_of_intervals = height_of_interval[0::2] + height_of_interval[1::2]
+    final_height_of_intervals = height_of_interval[1::2] - height_of_interval[0::2]
     final_trapizoid = ((top_of_fraction)/2) * final_height_of_intervals
     final_trapizoid_summed_up = np.sum(final_trapizoid)
     return final_trapizoid_summed_up
