@@ -1,8 +1,13 @@
 import numpy as np
 
 #Using Riemann sums to estimate the area under a curve by taking small, retangular or trapezoidal slices with the width defined by the differential
-#left_endpoint() uses the leftmost y value within the length of each slice
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
+# left_endpoint() uses the leftmost y value within the length of each slice.
+#width of rectangle represents the value between consecutive terms also know as
+# the height of the rectangle when calculating riemann sums. Values on curve is the
+#array values plugged into the given function. Multiply by is an array with all the 
+#final values of rectnagle heights with the final one taken off to account for this
+#being a left hand sum. final is the result of the multipation and summed for final answer
     width_of_rectangle_in_sum = np.array([0])
     size = len(x_vals)
     width_of_rectangle_in_sum = np.concatenate((width_of_rectangle_in_sum, x_vals))
@@ -15,8 +20,14 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     final = sum(final)
     return final
 
-#trapezoid() uses both the leftmost and rightmost y values to create trapezoidal slices
 def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
+# trapezoid() uses both the leftmost and rightmost y values to create trapezoidal 
+# slices. height of interval represents the height in the traizoidal area equation is 
+# the value of the values next to each other susbtracted from one another to calculate
+# the distance "height" of the sum, left and right bases are slices that are plugged
+#into the function then used to pre calculate the top of fraction to avoid divsion
+#errors, final height is adding the two function slices together to get the final value
+# trapizoid formula is performed then summed
     height_of_interval = np.array([0])
     size_of_array = len(x_vals)
     height_of_interval = np.concatenate((height_of_interval, x_vals))
@@ -29,8 +40,14 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
     final_trapizoid_summed_up = np.sum(final_trapizoid)
     return final_trapizoid_summed_up
 
-#simpson uses the midpoint of each slice for the height
 def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
+# simpson uses the midpoint of each slice for the height, defines the
+# midpoint by adding the values in the function and dividing them by 2 to find
+# the average or "middle" value then plugs these values into the given funciton.
+#calculates width by subtracting elements next to each other in inputted array
+#calculates left and right value of function by taking a slice of the orginal
+#function and plugging these values into the function. Then the simpson forumula
+#is performed
     midpoint = np.add(x_vals[0::2], x_vals[1::2]) / 2
     midpoint = func(midpoint)
     width  = x_vals[1::2] - x_vals[0::2]
