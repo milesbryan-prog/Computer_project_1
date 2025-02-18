@@ -14,25 +14,30 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
 # trapezoid() uses both the leftmost and rightmost y values to create trapezoidal
-#takes in a np array of x_vals and a function representing func
-# slices. height of interval represents the height in the traizoidal area equation is
-# the value of the values next to each other susbtracted from one another to calculate
-# the distance "height" of the sum, left and right bases are slices that are plugged
-#into the function then used to pre calculate the top of fraction to avoid divsion
-#errors, final height is adding the two function slices together to get the final value
-# trapizoid formula is performed then summed
+#calculates the base length of every value in the inputted array x_vals by running
+# it through the inputted function func. Calculates height by subtracting the nearest
+#intervals from one another. Preforms the trapizoid formula in two steps to confirm
+#we do not have egregious parenthesis or minor arithmetic mistakes. Sums the final array
+#with values and returns that array
+    left_side_values = func(x_vals[0:-1])
+    right_side_values = func(x_vals[1:])
+    height_of_trap = np.subtract(x_vals[1:], x_vals[0:-1])
+    top_of_fraction = (left_side_values+right_side_values) / 2
+    final = top_of_fraction * height_of_trap
+    final_sum = np.sum(final)
+    return final_sum
 
-     height_of_interval = np.array([0])
-     size_of_array = len(x_vals)
-     height_of_interval = np.concatenate((height_of_interval, x_vals))
-     height_of_interval = np.subtract(x_vals, height_of_interval[:size_of_array])
-     left_base_of_trapezoid = func([x_vals[0::2]])
-     right_base_of_trapezoid = func([x_vals[1::2]])
-     top_of_fraction = np.add(left_base_of_trapezoid, right_base_of_trapezoid)
-     final_height_of_intervals = np.add(height_of_interval[0::2], height_of_interval[1::2])
-     final_trapizoid = ((top_of_fraction)/2) * final_height_of_intervals
-     final_trapizoid_summed_up = np.sum(final_trapizoid)
-     return final_trapizoid_summed_up
+    # height_of_interval = np.array([0])
+    # size_of_array = len(x_vals)
+    # height_of_interval = np.concatenate((height_of_interval, x_vals))
+    # height_of_interval = np.subtract(x_vals, height_of_interval[:size_of_array])
+    # left_base_of_trapezoid = func([x_vals[0::2]])
+    # right_base_of_trapezoid = func([x_vals[1::2]])
+    # top_of_fraction = np.add(left_base_of_trapezoid, right_base_of_trapezoid)
+    # final_height_of_intervals = np.add(height_of_interval[0::2], height_of_interval[1::2])
+    # final_trapizoid = ((top_of_fraction)/2) * final_height_of_intervals
+    # final_trapizoid_summed_up = np.sum(final_trapizoid)
+    # return final_trapizoid_summed_up
 
 def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
 # simpson uses the midpoint of each slice for the height, defines the
