@@ -27,18 +27,6 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
     final_sum = np.sum(final)
     return final_sum
 
-    # height_of_interval = np.array([0])
-    # size_of_array = len(x_vals)
-    # height_of_interval = np.concatenate((height_of_interval, x_vals))
-    # height_of_interval = np.subtract(x_vals, height_of_interval[:size_of_array])
-    # left_base_of_trapezoid = func([x_vals[0::2]])
-    # right_base_of_trapezoid = func([x_vals[1::2]])
-    # top_of_fraction = np.add(left_base_of_trapezoid, right_base_of_trapezoid)
-    # final_height_of_intervals = np.add(height_of_interval[0::2], height_of_interval[1::2])
-    # final_trapizoid = ((top_of_fraction)/2) * final_height_of_intervals
-    # final_trapizoid_summed_up = np.sum(final_trapizoid)
-    # return final_trapizoid_summed_up
-
 def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
 # simpson uses the midpoint of each slice for the height, defines the
 # takes in a np array of x vals and a function for the curve
