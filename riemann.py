@@ -6,9 +6,13 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
 #takes in a np array of x values and the function of the curve
 #inputs all values from array into function and takes the difference on the
 #array to find the width of each rectangle multiply and sum to get final answer
+    #find the values of the curve exclude the last onie
     values_on_curve = func(x_vals[0:-1])
+    #determine the size inbetween intervals
     interval_size = np.subtract(x_vals[1::], x_vals[0:-1:])
+    #multiply the width and the actual value
     final = values_on_curve * interval_size
+    #sum of the array
     final = np.sum(final)
     return final
 
