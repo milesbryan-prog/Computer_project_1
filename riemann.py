@@ -23,10 +23,15 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
 #intervals from one another. Preforms the trapizoid formula in two steps to confirm
 #we do not have egregious parenthesis or minor arithmetic mistakes. Sums the final array
 #with values and returns that array
+    #calculate all values on the curve except last
     left_side_values = func(x_vals[0:-1])
+    #calculate all values on curve except first
     right_side_values = func(x_vals[1:])
+    #find the height of each interval
     height_of_trap = np.subtract(x_vals[1:], x_vals[0:-1])
+    #compute the numerator of the trapezoidal area function
     top_of_fraction = (left_side_values+right_side_values) / 2
+    #final calculation
     final = top_of_fraction * height_of_trap
     final_sum = np.sum(final)
     return final_sum
@@ -39,11 +44,17 @@ def simpson(x_vals: np.ndarray, func: np.ufunc)->float:
 #subtracting values next to one another to find distance between then function
 #is performed on even and odd values in the array before the simspons formula is
 #performed and summed giving us the final answer
+    #find the midpoint values of the function
     midpoint = np.add(x_vals[0:-1:], x_vals[1::]) / 2
+    #apply these values to the value on the curve
     midpoint = func(midpoint)
+    #find the width of each interval
     width  = np.subtract(x_vals[1::], x_vals[0:-1:])
+    #height of left values
     left_height = func(x_vals[0:-1:])
+    #height of right values
     right_height = func(x_vals[1::])
+    #perfrom the simpsons formula then sum up each item in the array
     simpson_sum = (width/6) * (left_height + (4 * (midpoint)) + right_height)
     simpson_sum = np.sum(simpson_sum)
     return simpson_sum
