@@ -21,7 +21,6 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc)->float:
 # it through the inputted function func. Calculates height by subtracting the nearest
 #intervals from one another. Preforms the trapizoid formula in two steps to confirm
 #we do not have egregious parenthesis or minor arithmetic mistakes. Sums the final array
-#with values and returns that array
     
     left_side_values = func(x_vals[0:-1])
     right_side_values = func(x_vals[1:])
